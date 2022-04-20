@@ -18,7 +18,7 @@ export default {
   components: {
     TheHeader,
     TheFilters,
-    TheResults
+    TheResults,
   },
 };
 </script>
@@ -28,7 +28,5 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  
 }
 </style>

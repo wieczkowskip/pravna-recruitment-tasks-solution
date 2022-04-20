@@ -1,7 +1,13 @@
 <template>
   <div class="results">
-    <p>Wyniki wyszukiwania (32)</p>
-    <CharacterItem v-for="person in this.$store.getters.getCharacters" :key="person.firstName"
+    <p>
+      Wyniki wyszukiwania ({{
+        this.$store.getters.getFilteredCharacters.length
+      }})
+    </p>
+    <CharacterItem
+      v-for="person in this.$store.getters.getFilteredCharacters"
+      :key="person.name"
       :fullName="person.name"
       :houseName="person.houseName"
       :birthdayDate="person.birthdayDate"
@@ -11,8 +17,7 @@
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
 <style scoped lang="scss">

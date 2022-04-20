@@ -1,10 +1,20 @@
 <template>
   <div class="results__character">
-    <img v-if="imageURL !== ''" class="character__photo" :src="imageURL" alt="character photo" />
-    <img v-else class="character__photo" src="../assets/user.svg" alt="character photo" />
+    <img
+      v-if="imageURL !== ''"
+      :class="`character__photo ${houseColor}`"
+      :src="imageURL"
+      alt="character photo"
+    />
+    <img
+      v-else
+      :class="`character__photo ${houseColor}`"
+      src="../assets/user.svg"
+      alt="character photo"
+    />
     <h2>{{ fullName }}</h2>
     <div class="character__house">
-      <div class="house__color"></div>
+      <div :class="`house__color ${houseColor}`"></div>
       <div class="house__name">{{ houseName }}</div>
     </div>
     <div class="character__birthday">
@@ -17,6 +27,11 @@
 <script>
 export default {
   props: ["fullName", "houseName", "birthdayDate", "imageURL"],
+  computed: {
+    houseColor() {
+      return this.houseName.toLowerCase();
+    },
+  },
 };
 </script>
 
@@ -36,11 +51,23 @@ export default {
     width: 128px;
     height: 128px;
     border-radius: 50%;
-    border: 4px solid #740001;
+    border: 4px solid #000;
   }
   .character__photo {
     object-fit: cover;
     object-position: 20% 10%;
+  }
+  .gryffindor {
+    border-color: #740001;
+  }
+  .slytherin {
+    border-color: #1a472a;
+  }
+  .ravenclaw {
+    border-color: #0e1a40;
+  }
+  .hufflepuff {
+    border-color: #ecb939;
   }
   h2 {
     color: #2f3542;
@@ -55,9 +82,21 @@ export default {
     .house__color {
       width: 16px;
       height: 16px;
-      background-color: #740001;
+      background-color: #000;
       border-radius: 4px;
       margin-right: 8px;
+    }
+    .gryffindor {
+      background-color: #740001;
+    }
+    .slytherin {
+      background-color: #1a472a;
+    }
+    .ravenclaw {
+      background-color: #0e1a40;
+    }
+    .hufflepuff {
+      background-color: #ecb939;
     }
     .house__name {
       color: #57606f;

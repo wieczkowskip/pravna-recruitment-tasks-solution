@@ -1,15 +1,15 @@
 <template>
-  <button :class="className">
+  <button :class="classNameExtra" :type="type">
     <slot></slot>
   </button>
 </template>
 
 <script>
 export default {
-  props: ["type", "icon", "iconAlt"],
+  props: ["className", "type"],
   computed: {
-    className() {
-      return `form__button form__button--${this.type}`;
+    classNameExtra() {
+      return `form__button form__button--${this.className}`;
     },
   },
 };
